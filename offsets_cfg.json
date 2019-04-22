@@ -1,0 +1,21 @@
+{
+    "bert_model": "bert-large-cased",
+    "task_name": "GAP: Offsets model",
+    "do_lower_case": false,
+    "n_bertlayers": 22,
+    "dropout": 0.1,
+    "train_batch_size": 4,
+    "gradient_accumulation_steps": 5,
+    "eval_batch_size": 32,
+    "lr": 1e-05,
+    "num_train_epochs": 2,
+    "warmup_proportion": 0.1,
+    "optim": "bertadam",
+    "weight_decay": false,
+    "save_model": true,
+    "model_fname_template": "offsets_{:03d}_ep_{:d}.model",
+    "log_dir": "log/",
+    "data_dir": "../",
+    "model_dir": "model/",
+    "n_models": 30
+}
