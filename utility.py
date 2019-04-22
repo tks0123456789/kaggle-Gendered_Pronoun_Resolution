@@ -72,12 +72,14 @@ def get_sentence(text, offset, token_after="[PRONOUN]"):
     Extract a sentence containing a word at position offset by character and
     replace the word with token_after.
     output: Transformed sentence
-            token_before
-            a pos tag of the word.
+            A word starting at offset
+            A pos tag of the word.
+            Default values if the word cannot be extracted.
     """
     doc = nlp(text)
     # idx: Character offset
     idx_begin = 0
+    sent = None
     for token in doc:
         if token.sent_start:
             idx_begin = token.idx
@@ -88,9 +90,15 @@ def get_sentence(text, offset, token_after="[PRONOUN]"):
             break
     # word_s = sent[idx_token:].split()
     # n = len(sent)
-    token_before = token.string.strip()
-    subtxt_transformed = re.sub("^" + token_before, token_after, sent[idx_token:])
-    sent_transformed = sent[:idx_token] + subtxt_transformed
+    if sent is None:
+        # Default values
+        sent_transformed = token_after
+        token_before = "it"
+        pos_tag = "PRON"
+    else:
+        token_before = token.string.strip()
+        subtxt_transformed = re.sub("^" + token_before, token_after, sent[idx_token:])
+        sent_transformed = sent[:idx_token] + subtxt_transformed
     # n_diff = len(sent_transformed) - n - len(token_after) + len(token_before)
     return sent_transformed, token_before, pos_tag
 
