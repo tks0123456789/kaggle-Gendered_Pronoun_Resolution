@@ -1,4 +1,5 @@
 ## 10th place solution for [Gendered Pronoun Resolution on Kaggle](https://www.kaggle.com/c/gendered-pronoun-resolution) ##
+### I borrow some code from [pytorch-pretrained-BERT/example](https://github.com/huggingface/pytorch-pretrained-BERT/tree/master/examples) and [[PyTorch] BERT Baseline (Public Score ~ 0.54)](https://www.kaggle.com/ceshine/pytorch-bert-baseline-public-score-0-54). ###
 
 ## Instruction ##
 ### Build docker image using docker/Dockerfile. ###
@@ -6,7 +7,7 @@
 
 ```
 ./train.sh offsets 30
-./train.sh nli 30```
+./train.sh nli 30
 ```
 It will save 90 models(111GB). If your GPU have only 8GB of RAM, change from
 
